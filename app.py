@@ -82,7 +82,7 @@ st.markdown(
     """
     <div style='text-align:center; margin-bottom:30px;'>
         <h1>🩺 Liver Disease Prediction App</h1>
-        <p style='color:#5A5A5A; font-size:18px;'>Enter patient details below to get prediction</p>
+        <p style='color:#5A5A5A; font-size:18px;'>Enter patient details below</p>
     </div>
     """,
     unsafe_allow_html=True
@@ -95,7 +95,7 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("<div class='input-card'>", unsafe_allow_html=True)
-    age = st.number_input("Age", min_value=0, max_value=120, value=30)
+    age = st.number_input("Age", min_value=0, max_value=120, value=0)
     sex = st.selectbox("Sex", ("Select", "Female", "Male"))
     if sex == "Female":
         sex_encoded = 0
@@ -171,3 +171,4 @@ if st.button("Predict"):
 # Footer
 # ------------------------------
 st.markdown("<br>", unsafe_allow_html=True)
+
