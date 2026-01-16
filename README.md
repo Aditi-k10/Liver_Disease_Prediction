@@ -86,3 +86,7 @@ The deployed Streamlit application provides:
 - Probability scores for each disease category
 - Clear visual feedback for prediction results
 
+## Deployment
+The application is deployed using Streamlit Cloud.
+Live Application:
+https://liverdiseaseprediction-npkixarr2hxnu6earjedhj.streamlit.app/
