@@ -95,7 +95,9 @@ col1, col2 = st.columns(2)
 
 with col1:
     st.markdown("<div class='input-card'>", unsafe_allow_html=True)
+
     age = st.number_input("Age", min_value=0, max_value=120, value=0)
+
     sex = st.selectbox("Sex", ("Select", "Female", "Male"))
     if sex == "Female":
         sex_encoded = 0
@@ -106,18 +108,27 @@ with col1:
 
     albumin = st.number_input("Albumin", min_value=0.0, value=0.0)
     alkaline_phosphatase = st.number_input("Alkaline Phosphatase", min_value=0.0, value=0.0)
-    alanine_aminotransferase = st.number_input("Alanine Aminotransferase (SGPT)", min_value=0.0, value=0.0)
-    aspartate_aminotransferase = st.number_input("Aspartate Aminotransferase (SGOT)", min_value=0.0, value=0.0)
+    alanine_aminotransferase = st.number_input(
+        "Alanine Aminotransferase (SGPT)", min_value=0.0, value=0.0
+    )
+    aspartate_aminotransferase = st.number_input(
+        "Aspartate Aminotransferase (SGOT)", min_value=0.0, value=0.0
+    )
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 with col2:
     st.markdown("<div class='input-card'>", unsafe_allow_html=True)
+
     bilirubin = st.number_input("Bilirubin", min_value=0.0, value=0.0)
     cholinesterase = st.number_input("Cholinesterase", min_value=0.0, value=0.0)
     cholesterol = st.number_input("Cholesterol", min_value=0.0, value=0.0)
     creatinina = st.number_input("Creatinina", min_value=0.0, value=0.0)
-    gamma_glutamyl_transferase = st.number_input("Gamma Glutamyl Transferase", min_value=0.0, value=0.0)
+    gamma_glutamyl_transferase = st.number_input(
+        "Gamma Glutamyl Transferase", min_value=0.0, value=0.0
+    )
     protein = st.number_input("Protein", min_value=0.0, value=0.0)
+
     st.markdown("</div>", unsafe_allow_html=True)
 
 # ------------------------------
@@ -171,4 +182,5 @@ if st.button("Predict"):
 # Footer
 # ------------------------------
 st.markdown("<br>", unsafe_allow_html=True)
+
 
