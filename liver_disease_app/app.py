@@ -5,6 +5,7 @@ import numpy as np
 
 
 # Load the trained Gradient Boosting model
+model_path = os.path.join(os.path.dirname(liver_disease_app), "gradient_boosting_model.pkl")
 
 with open("gradient_boosting_model.pkl", "rb") as file:
     model = pickle.load(file)
@@ -81,3 +82,4 @@ if st.button("Predict"):
         st.subheader("Probability of Each Class")
         for cls, prob in zip(model.classes_, proba_all):
             st.write(f"{cls.replace('_', ' ').title()}: {prob*100:.2f}%")
+
