@@ -51,6 +51,19 @@ st.markdown(
     h2 {
         color: #FF6F61;
     }
+
+    /* Center the button */
+    .stButton > button {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        background-color: #FF4B4B;
+        color: white;
+        font-size: 18px;
+        padding: 10px 30px;
+        border-radius: 10px;
+        border: none;
+    }
     </style>
     """,
     unsafe_allow_html=True
@@ -76,43 +89,42 @@ st.markdown(
 )
 
 # ------------------------------
-# Input Form inside a card - 2 columns, 6 inputs each
+# Input Form: 2 columns, 6 inputs each
 # ------------------------------
-with st.container():
-    col1, col2 = st.columns(2)
+col1, col2 = st.columns(2)
 
-    with col1:
-        st.markdown("<div class='input-card'>", unsafe_allow_html=True)
-        age = st.number_input("Age", min_value=0, max_value=120, value=30)
-        sex = st.selectbox("Sex", ("Select", "Female", "Male"))
-        if sex == "Female":
-            sex_encoded = 0
-        elif sex == "Male":
-            sex_encoded = 1
-        else:
-            sex_encoded = None
+with col1:
+    st.markdown("<div class='input-card'>", unsafe_allow_html=True)
+    age = st.number_input("Age", min_value=0, max_value=120, value=30)
+    sex = st.selectbox("Sex", ("Select", "Female", "Male"))
+    if sex == "Female":
+        sex_encoded = 0
+    elif sex == "Male":
+        sex_encoded = 1
+    else:
+        sex_encoded = None
 
-        albumin = st.number_input("Albumin", min_value=0.0, value=0.0)
-        alkaline_phosphatase = st.number_input("Alkaline Phosphatase", min_value=0.0, value=0.0)
-        alanine_aminotransferase = st.number_input("Alanine Aminotransferase (SGPT)", min_value=0.0, value=0.0)
-        aspartate_aminotransferase = st.number_input("Aspartate Aminotransferase (SGOT)", min_value=0.0, value=0.0)
-        st.markdown("</div>", unsafe_allow_html=True)
+    albumin = st.number_input("Albumin", min_value=0.0, value=0.0)
+    alkaline_phosphatase = st.number_input("Alkaline Phosphatase", min_value=0.0, value=0.0)
+    alanine_aminotransferase = st.number_input("Alanine Aminotransferase (SGPT)", min_value=0.0, value=0.0)
+    aspartate_aminotransferase = st.number_input("Aspartate Aminotransferase (SGOT)", min_value=0.0, value=0.0)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-    with col2:
-        st.markdown("<div class='input-card'>", unsafe_allow_html=True)
-        bilirubin = st.number_input("Bilirubin", min_value=0.0, value=0.0)
-        cholinesterase = st.number_input("Cholinesterase", min_value=0.0, value=0.0)
-        cholesterol = st.number_input("Cholesterol", min_value=0.0, value=0.0)
-        creatinina = st.number_input("Creatinina", min_value=0.0, value=0.0)
-        gamma_glutamyl_transferase = st.number_input("Gamma Glutamyl Transferase", min_value=0.0, value=0.0)
-        protein = st.number_input("Protein", min_value=0.0, value=0.0)
-        st.markdown("</div>", unsafe_allow_html=True)
+with col2:
+    st.markdown("<div class='input-card'>", unsafe_allow_html=True)
+    bilirubin = st.number_input("Bilirubin", min_value=0.0, value=0.0)
+    cholinesterase = st.number_input("Cholinesterase", min_value=0.0, value=0.0)
+    cholesterol = st.number_input("Cholesterol", min_value=0.0, value=0.0)
+    creatinina = st.number_input("Creatinina", min_value=0.0, value=0.0)
+    gamma_glutamyl_transferase = st.number_input("Gamma Glutamyl Transferase", min_value=0.0, value=0.0)
+    protein = st.number_input("Protein", min_value=0.0, value=0.0)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # ------------------------------
-# Predict Button
+# Centered Predict Button
 # ------------------------------
 st.markdown("<br>", unsafe_allow_html=True)
-if st.button("Predict", type="primary"):
+if st.button("Predict"):
     if sex_encoded is None:
         st.warning("⚠️ Please select Sex")
     else:
