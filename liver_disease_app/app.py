@@ -1,6 +1,7 @@
 # app.py
 import streamlit as st
 import pickle
+import os
 import numpy as np 
 
 
@@ -82,5 +83,6 @@ if st.button("Predict"):
         st.subheader("Probability of Each Class")
         for cls, prob in zip(model.classes_, proba_all):
             st.write(f"{cls.replace('_', ' ').title()}: {prob*100:.2f}%")
+
 
 
