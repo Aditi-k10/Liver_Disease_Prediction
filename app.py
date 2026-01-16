@@ -18,9 +18,9 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    /* Gradient background */
+    /* Gradient background - soft aesthetic */
     .stApp {
-        background: linear-gradient(to right, #FFDDE1, #FFDEE9);
+        background: linear-gradient(to right, #C1F0F6, #FDE2F3);
         color: #333333;
         font-family: 'Segoe UI', sans-serif;
     }
@@ -76,7 +76,7 @@ st.markdown(
 )
 
 # ------------------------------
-# Input Form inside a card
+# Input Form inside a card - 2 columns, 6 inputs each
 # ------------------------------
 with st.container():
     col1, col2 = st.columns(2)
