@@ -171,4 +171,3 @@ if st.button("Predict"):
 # Footer
 # ------------------------------
 st.markdown("<br>", unsafe_allow_html=True)
-st.markdown("<p style='text-align:center; color:#5A5A5A;'>Designed with ❤️ for liver health monitoring</p>", unsafe_allow_html=True)
