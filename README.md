@@ -86,8 +86,3 @@ The deployed Streamlit application provides:
 - Probability scores for each disease category
 - Clear visual feedback for prediction results
 
-
-
-
-
-## Project Structure
