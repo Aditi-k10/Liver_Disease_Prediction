@@ -49,7 +49,17 @@ with open("gradient_boosting_model.pkl", "rb") as f:
 # ------------------------------
 # Header
 # ------------------------------
-st.markdown("<h1 style='text-align:center;'>🩺 Liver Disease Prediction</h1>", unsafe_allow_html=True)
+st.markdown(
+    """
+    <div style="margin-top:40px; text-align:center;">
+        <h1 style="font-size:48px; margin-bottom:10px;">
+            🩺 Liver Disease Prediction
+        </h1>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 st.markdown("<p style='text-align:center;'>Enter patient clinical details</p>", unsafe_allow_html=True)
 
 # ------------------------------
@@ -118,6 +128,7 @@ if st.button("Predict"):
                 """,
                 unsafe_allow_html=True
             )
+
 
 
 
