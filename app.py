@@ -96,11 +96,6 @@ with col2:
     gamma_glutamyl_transferase = st.number_input("Gamma Glutamyl Transferase", min_value=0.0, value=0.0)
     protein = st.number_input("Protein", min_value=0.0, value=0.0)
 
-# ------------------------------
-# Predict Button & Output
-# ------------------------------
-st.markdown("<br>", unsafe_allow_html=True)
-
 if st.button("Predict"):
     if sex_encoded is None:
         st.warning("⚠️ Please select Sex")
@@ -112,28 +107,25 @@ if st.button("Predict"):
             gamma_glutamyl_transferase, protein
         ]])
 
-        predicted_class = model.predict(input_data)[0]
+        prediction = model.predict(input_data)[0]
         probabilities = model.predict_proba(input_data)[0]
 
-        # ------------------------------
-        # Prediction Card
-        # ------------------------------
         st.markdown("<div class='prediction-card'>", unsafe_allow_html=True)
 
-        # Disease Predicted
+        # Prediction text
         st.markdown("<h2>Disease Predicted</h2>", unsafe_allow_html=True)
 
-        if predicted_class == "no_disease":
-            st.markdown("<h3 style='color:#2ECC71;'>✅ No Liver Disease</h3>", unsafe_allow_html=True)
-        elif predicted_class == "suspect_disease":
-            st.markdown("<h3 style='color:#F1C40F;'>⚠️ Suspected Liver Disease</h3>", unsafe_allow_html=True)
+        if prediction == "no_disease":
+            st.success("✅ No Liver Disease")
+        elif prediction == "suspect_disease":
+            st.warning("⚠️ Suspected Liver Disease")
         else:
-            st.markdown("<h3 style='color:#E74C3C;'>❌ Liver Disease Detected</h3>", unsafe_allow_html=True)
+            st.error("❌ Liver Disease Detected")
 
-        # Probabilities
         st.markdown("<hr>", unsafe_allow_html=True)
-        st.markdown("<h4>Probability of Each Condition</h4>", unsafe_allow_html=True)
+        st.markdown("### Probability of Each Condition")
 
+        # Compact probability bars
         for cls, prob in zip(model.classes_, probabilities):
             if cls == "no_disease":
                 color = "#2ECC71"
@@ -142,15 +134,16 @@ if st.button("Predict"):
             else:
                 color = "#E74C3C"
 
-            st.markdown(f"""
-            <div style='background-color:#E0E0E0; border-radius:10px; margin-bottom:8px;'>
-                <div style='width:{prob*100}%; background-color:{color};
-                padding:8px; border-radius:10px; color:white;
-                font-weight:bold; text-align:center;'>
-                    {cls.replace('_',' ').title()}: {prob*100:.2f}%
+            st.markdown(
+                f"""
+                <div class="prob-bar-bg">
+                    <div class="prob-bar" style="width:{prob*100}%; background-color:{color};">
+                        {cls.replace('_',' ').title()} : {prob*100:.2f}%
+                    </div>
                 </div>
-            </div>
-            """, unsafe_allow_html=True)
+                """,
+                unsafe_allow_html=True
+            )
 
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -158,3 +151,4 @@ if st.button("Predict"):
 # Footer Space
 # ------------------------------
 st.markdown("<br>", unsafe_allow_html=True)
+
