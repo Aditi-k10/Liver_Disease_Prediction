@@ -89,63 +89,37 @@ if st.button("Predict"):
         probs = model.predict_proba(X)[0]
 
         # ------------------------------
-        # Disease detected (name in front)
+        # Disease Detected (same line, red)
         # ------------------------------
-        st.markdown("## Disease Detected")
-
-        disease_map = {
-            "no_disease": "No Liver Disease",
-            "suspect_disease": "Suspected Liver Disease",
-            "liver_disease": "Liver Disease Detected"
-        }
-
-        detected_disease = disease_map.get(pred, pred.replace("_", " ").title())
-
-        if pred == "no_disease":
-            st.success(f" {detected_disease}")
-        elif pred == "suspect_disease":
-            st.warning(f" {detected_disease}")
-        else:
-            st.error(f" {detected_disease}")
+        st.markdown(
+            f"""
+            <h2>
+                Disease Detected :
+                <span style="color:#E74C3C; font-weight:700;">
+                    {pred.replace('_', ' ').title()}
+                </span>
+            </h2>
+            """,
+            unsafe_allow_html=True
+        )
 
         # ------------------------------
-        # Probability of each disease
+        # Probability of each disease (TEXT ONLY)
         # ------------------------------
-        bars_html = """
-        <div style="background:white;padding:20px;border-radius:12px;
-                    box-shadow:0 4px 12px rgba(0,0,0,0.15);margin-top:15px;">
-        <h3>Probability of Each Disease</h3>
-        """
+        st.markdown("### Probability of Each Disease")
 
         for cls, p in zip(model.classes_, probs):
-            if cls == "no_disease":
-                color = "#2ECC71"
-            elif cls == "suspect_disease":
-                color = "#F1C40F"
-            else:
-                color = "#E74C3C"
+            st.markdown(
+                f"""
+                <p style="font-size:18px; margin:6px 0;">
+                    <strong>{cls.replace('_',' ').title()}</strong> :
+                    {p*100:.2f}%
+                </p>
+                """,
+                unsafe_allow_html=True
+            )
 
-            bars_html += f"""
-            <div style="margin-bottom:12px;">
-                <strong>{cls.replace('_',' ').title()}</strong>
-                <div style="background:#E0E0E0;border-radius:8px;height:28px;">
-                    <div style="width:{p*100:.1f}%;
-                                background:{color};
-                                height:28px;
-                                border-radius:8px;
-                                text-align:center;
-                                color:white;
-                                font-weight:600;
-                                line-height:28px;">
-                        {p*100:.2f}%
-                    </div>
-                </div>
-            </div>
-            """
 
-        bars_html += "</div>"
-
-        components.html(bars_html, height=260)
 
 
 
