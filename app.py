@@ -102,11 +102,11 @@ if st.button("Predict"):
         detected_disease = disease_map.get(pred, pred.replace("_", " ").title())
 
         if pred == "no_disease":
-            st.success(f"✅ {detected_disease}")
+            st.success(f" {detected_disease}")
         elif pred == "suspect_disease":
-            st.warning(f"⚠️ {detected_disease}")
+            st.warning(f" {detected_disease}")
         else:
-            st.error(f"❌ {detected_disease}")
+            st.error(f" {detected_disease}")
 
         # ------------------------------
         # Probability of each disease
@@ -146,5 +146,6 @@ if st.button("Predict"):
         bars_html += "</div>"
 
         components.html(bars_html, height=260)
+
 
 
