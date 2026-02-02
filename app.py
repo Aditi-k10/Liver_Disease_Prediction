@@ -88,22 +88,33 @@ if st.button("Predict"):
         pred = model.predict(X)[0]
         probs = model.predict_proba(X)[0]
 
-        st.markdown("## Disease Predicted")
+        # ------------------------------
+        # Disease detected (name in front)
+        # ------------------------------
+        st.markdown("## Disease Detected")
+
+        disease_map = {
+            "no_disease": "No Liver Disease",
+            "suspect_disease": "Suspected Liver Disease",
+            "liver_disease": "Liver Disease Detected"
+        }
+
+        detected_disease = disease_map.get(pred, pred.replace("_", " ").title())
 
         if pred == "no_disease":
-            st.success("✅ No Liver Disease")
+            st.success(f"✅ {detected_disease}")
         elif pred == "suspect_disease":
-            st.warning("⚠️ Suspected Liver Disease")
+            st.warning(f"⚠️ {detected_disease}")
         else:
-            st.error("❌ Liver Disease Detected")
+            st.error(f"❌ {detected_disease}")
 
         # ------------------------------
-        # Compact Probability Bars (HTML)
+        # Probability of each disease
         # ------------------------------
         bars_html = """
         <div style="background:white;padding:20px;border-radius:12px;
-                    box-shadow:0 4px 12px rgba(0,0,0,0.15);">
-        <h3>Probability of Each Condition</h3>
+                    box-shadow:0 4px 12px rgba(0,0,0,0.15);margin-top:15px;">
+        <h3>Probability of Each Disease</h3>
         """
 
         for cls, p in zip(model.classes_, probs):
@@ -135,3 +146,5 @@ if st.button("Predict"):
         bars_html += "</div>"
 
         components.html(bars_html, height=260)
+
+
