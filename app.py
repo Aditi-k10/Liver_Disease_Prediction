@@ -53,7 +53,7 @@ st.markdown(
     """
     <div style="margin-top:40px; text-align:center;">
         <h1 style="font-size:48px; margin-bottom:10px;">
-            🩺 Liver Disease Prediction
+            🩺 Liver Disease Prediction App
         </h1>
     </div>
     """,
@@ -128,6 +128,7 @@ if st.button("Predict"):
                 """,
                 unsafe_allow_html=True
             )
+
 
 
 
