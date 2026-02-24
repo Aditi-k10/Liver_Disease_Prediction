@@ -89,4 +89,4 @@ The deployed Streamlit application provides:
 ## Deployment
 The application is deployed using Streamlit Cloud.
 Live Application:
-https://liverdiseaseprediction-npkixarr2hxnu6earjedhj.streamlit.app/
+https://clinical-liver-disease-risk-prediction-ml-gpjdwimvpqtuuxjjdpr9.streamlit.app/
