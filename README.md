@@ -1,4 +1,4 @@
-# Liver Disease Classification Using Machine Learning
+# Clinical Liver Disease Risk Prediction using Machine Learning
 
 ## Project Overview
 This project focuses on predicting liver disease conditions using machine learning classification techniques.  
